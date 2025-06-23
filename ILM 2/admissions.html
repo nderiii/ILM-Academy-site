@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILM Academy | Admissions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #5cbbf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .facility-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+        }
+        
+        .club-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .admission-step {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .admission-step:before {
+            content: "";
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        
+        .admission-step:last-child:before {
+            bottom: calc(100% - 2.5rem);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+            border: 1px solid #d1d5db;
+        }
+        
+        .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center animate-slide-left">
+                    <a href="index.html" class="flex items-center">
+                        <img src="ilm logo.jpg" alt="ILM Academy Logo" class="h-10 mr-2">
+                        <span class="text-xl font-bold text-gray-900">ILM Academy</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
+                        <a href="about.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">About</a>
+                        <a href="programs.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Programs</a>
+                        <a href="facilities.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Facilities</a>
+                        <a href="admissions.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Admissions</a>
+                        <a href="contact.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                        <a href="privacy.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">About</a>
+                <a href="programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Programs</a>
+                <a href="facilities.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Facilities</a>
+                <a href="admissions.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:bg-gray-50">Admissions</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+                <a href="privacy.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Privacy Policy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="parallax bg-gradient-to-r from-blue-500 to-cyan-600 py-32 flex items-center justify-center">
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">Admissions <span class="gradient-text">Process</span></h1>
+                <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto animate-fade-in delay-100">Join Our ILM Family, We welcome new students and families who are ready to be part of an inspiring, caring and dynamic learning environment</p>
+                <div class="animate-fade-in delay-200">
+                    <a href="#apply-now" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-10 transition duration-300">
+                        Apply Now
+                        <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Why Choose <span class="gradient-text">ILM Academy</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">A nurturing environment that combines academic rigor with Religious values</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-cyan-50 p-8 rounded-xl animate-fade-in">
+                    <div class="bg-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-star text-cyan-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Academic Excellence</h3>
+                    <p class="text-gray-600 text-center">Our curriculum meets and exceeds national standards while integrating Islamic values across all subjects.</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-8 rounded-xl animate-fade-in delay-100">
+                    <div class="bg-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-hands-helping text-cyan-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Engaging Environment</h3>
+                    <p class="text-gray-600 text-center">In our school we let the students have fun and engage with others in the field and clubs to build bonds and connections</p>
+                </div>
+                
+                <div class="bg-cyan-50 p-8 rounded-xl animate-fade-in delay-200">
+                    <div class="bg-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-users text-cyan-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Qualified Teachers</h3>
+                    <p class="text-gray-600 text-center">Our faculty includes certified educators dedicated to student development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Admission <span class="gradient-text">Process</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">Our straightforward process to join the ILM Academy family</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-8">
+                    <div class="admission-step animate-fade-in">
+                        <div class="step-number">1</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3">Inquiry & School Tour</h3>
+                            <p class="text-gray-600 mb-4">Submit an inquiry form or call our admissions office to schedule a personalized tour of our facilities.</p>
+                            <div class="flex items-center text-blue-600">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                <span>Tours available Monday-Friday, 9am-2pm</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-step animate-fade-in delay-100">
+                        <div class="step-number">2</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3">Application Submission</h3>
+                            <p class="text-gray-600 mb-4">Complete the online application form and submit required documents including academic records and birth certificate.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-step animate-fade-in delay-200">
+                        <div class="step-number">3</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3">Assessment & Interview</h3>
+                            <p class="text-gray-600 mb-4">Students complete grade-level assessments while parents meet with administration to discuss educational goals.</p>
+                            <div class="flex items-center text-blue-600">
+                                <i class="fas fa-chalkboard-teacher mr-2"></i>
+                                <span>Assessments scheduled within 1 week of application</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-step animate-fade-in delay-300">
+                        <div class="step-number">4</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3">Admission Decision</h3>
+                            <p class="text-gray-600 mb-4">Receive notification of acceptance within 5 business days with enrollment instructions.</p>
+                            <div class="flex items-center text-blue-600">
+                                <i class="fas fa-envelope mr-2"></i>
+                                <span>Decisions communicated via email and phone</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-step animate-fade-in delay-400">
+                        <div class="step-number">5</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3">Enrollment Completion</h3>
+                            <p class="text-gray-600">Submit enrollment forms, health records, and tuition deposit to secure your child's place.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--<div class="mt-12 text-center animate-fade-in delay-500">
+                    <a href="#apply-now" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-10 transition duration-300">
+                        Begin Application
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tuition & Financial Aid -->
+    <!--<section class="py-20 bg-white ">           
+                
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Financial <span class="gradient-text">Assistance</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">ILM Academy is committed to making Islamic education accessible. We offer several financial aid options:</p>
+            </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                <span><strong>Need-based scholarships</strong> covering up to 50% of tuition</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                <span><strong>Monthly payment plans</strong> (10-month or 12-month options)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                <span><strong>Zakat-funded assistance</strong> for qualifying families</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                <span><strong>Early payment discounts</strong> for full tuition paid by July 1</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-12 text-center animate-fade-in delay-500">
+                            <a href="contact.html" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-10 transition duration-300">
+                                Request Financial Aid info
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Application Form -->
+    <section id="apply-now" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Application <span class="gradient-text">Form</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">Begin your child's journey at ILM Academy today</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fade-in">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-600 p-12 text-white">
+                        <h3 class="text-2xl font-semibold mb-6">Application Requirements</h3>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Completed application form</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Copy of birth certificate</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Most recent report card/transcript</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Immunization records</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Teacher recommendation form (Grades 3+)</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="bg-blue-700 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2"><i class="fas fa-clock mr-2"></i> Application Deadlines</h4>
+                            <p>Priority Deadline: March 1<br>
+                            Rolling Admissions: Space permitting</p>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-12">
+                        <form id="admission-form" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+                            <!-- Web3Forms Required Hidden Inputs -->
+                            <input type="hidden" name="access_key" value="22932d46-ad42-46f5-86aa-f358808208ba">
+                            <input type="hidden" name="subject" value="New Admission Application from ILM Academy">
+                            <!--<input type="hidden" name="redirect" value="/thank-you.html">-->
+                            <input type="hidden" name="captcha" value="true">
+                            
+                            <!-- Student Full Name -->
+                            <div>
+                            <label for="student-name" class="block text-sm font-medium text-gray-700 mb-1">Student Full Name</label>
+                            <input type="text" id="student-name" name="student_name" class="form-input w-full px-4 py-3 rounded-lg" required>
+                            </div>
+                            
+                            <!-- Grade and DOB -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="grade" class="block text-sm font-medium text-gray-700 mb-1">Grade Applying For</label>
+                                <select id="grade" name="grade" class="form-input w-full px-4 py-3 rounded-lg" required>
+                                <option value="">Select Grade</option>
+                                <option value="PK3">Preschool 3</option>
+                                <option value="PK4">Preschool 4</option>
+                                <option value="K">Kindergarten</option>
+                                <option value="1">Grade 1</option>
+                                <option value="2">Grade 2</option>
+                                <option value="3">Grade 3</option>
+                                <option value="4">Grade 4</option>
+                                <option value="5">Grade 5</option>
+                                <option value="6">Grade 6</option>
+                                <option value="7">Grade 7</option>
+                                <option value="8">Grade 8</option>
+                                <option value="9">Grade 9</option>
+                                <option value="10">Grade 10</option>
+                                <option value="11">Grade 11</option>
+                                <option value="12">Grade 12</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="Date Of Birth" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                <input type="date" id="DateOf Birth" name="Date Of Birth" class="form-input w-full px-4 py-3 rounded-lg" required>
+                            </div>
+                            </div>
+                            
+                            <!-- Current School -->
+                            <div>
+                            <label for="current-school" class="block text-sm font-medium text-gray-700 mb-1">Current School (if applicable)</label>
+                            <input type="text" id="current-school" name="current_school" class="form-input w-full px-4 py-3 rounded-lg">
+                            </div>
+                            
+                            <!-- Parent Name -->
+                            <div>
+                            <label for="parent-name" class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
+                            <input type="text" id="parent-name" name="parent_name" class="form-input w-full px-4 py-3 rounded-lg" required>
+                            </div>
+                            
+                            <!-- Email and Phone -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 rounded-lg" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 rounded-lg" required>
+                            </div>
+                            </div>
+                            
+                            <!-- Address -->
+                            <div>
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Home Address</label>
+                            <textarea id="address" name="address" rows="2" class="form-input w-full px-4 py-3 rounded-lg" required></textarea>
+                            </div>
+                            
+                            <!-- School Tour Checkbox -->
+                            <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="tour" name="school_tour" type="checkbox" value="Yes" class="focus:ring-blue-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="tour" class="font-medium text-gray-700">I would like to schedule a school tour</label>
+                            </div>
+                            </div>
+                            
+                            <!-- Questions -->
+                            <div>
+                            <label for="questions" class="block text-sm font-medium text-gray-700 mb-1">Questions or Additional Information</label>
+                            <textarea id="questions" name="questions" rows="3" class="form-input w-full px-4 py-3 rounded-lg"></textarea>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                            <button id="submitButton" type="submit" class="w-full flex justify-center items-center px-6 py-4 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-8 transition duration-300">
+                                <span id="buttonText">Submit Application</span>
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">Answers to common questions about our admissions process</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <div class="faq-item bg-gray-50 p-6 rounded-lg animate-fade-in">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center justify-between cursor-pointer">
+                            <span>What are the school hours?</span>
+                            <i class="fas fa-chevron-down text-blue-600"></i>
+                        </h3>
+                        <div class="text-gray-600">
+                            <p>Our regular school hours are 8:00 AM to 3:30 PM for all grades. Preschool has a half-day option ending at 12:30 PM. Extended care is available until 6:00 PM for an additional fee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-gray-50 p-6 rounded-lg animate-fade-in delay-100">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center justify-between cursor-pointer">
+                            <span>Is there a uniform requirement?</span>
+                            <i class="fas fa-chevron-down text-blue-600"></i>
+                        </h3>
+                        <div class="text-gray-600 hidden">
+                            <p>Yes, ILM Academy has a modest uniform policy. Our uniforms consist of navy blue or khaki pants/skirts with white or light blue polo shirts. Complete uniform details and vendors are provided upon enrollment.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="faq-item bg-gray-50 p-6 rounded-lg animate-fade-in delay-300">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center justify-between cursor-pointer">
+                            <span>Do you offer transportation services?</span>
+                            <i class="fas fa-chevron-down text-blue-600"></i>
+                        </h3>
+                        <div class="text-gray-600 hidden">
+                            <p>Yes, we offer optional bus transportation serving most areas in the city. Our buses are equipped with seat belts and supervised by monitors.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-gray-50 p-6 rounded-lg animate-fade-in delay-400">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center justify-between cursor-pointer">
+                            <span>What is your teacher-to-student ratio?</span>
+                            <i class="fas fa-chevron-down text-blue-600"></i>
+                        </h3>
+                        <div class="text-gray-600 hidden">
+                            <p>We maintain small class sizes to ensure personalized attention. Our average ratios are:</p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>Preschool: 1:8 with teacher and assistant</li>
+                                <li>Elementary: 1:12</li>
+                                <li>Middle/High School: 1:15</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item bg-gray-50 p-6 rounded-lg animate-fade-in delay-500">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center justify-between cursor-pointer">
+                            <span>How do you handle students with learning differences?</span>
+                            <i class="fas fa-chevron-down text-blue-600"></i>
+                        </h3>
+                        <div class="text-gray-600 hidden">
+                            <p>We provide limited accommodations for students with mild learning differences. Our learning specialist works with teachers to implement appropriate strategies. However, we are not equipped to serve students with significant special needs. We recommend discussing your child's specific needs during the admissions process.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center animate-fade-in">
+                    <p class="text-gray-600 mb-6">Have more questions? We're happy to help!</p>
+                    <a href="contact.html" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-10 transition duration-300">
+                        Contact Admissions
+                        <i class="fas fa-envelope ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <!-- Add a dark background container for the logo -->
+                        <div class="bg-gray-900 p-1 rounded mr-2">
+                            <img src="ilm logo.jpg" alt="ILM Academy Logo" class="h-10">
+                        </div>
+                        <span class="text-xl font-bold">ILM Academy</span>
+                    </div>
+                    <p class="text-gray-400">We provide an environment
+                        where our children develop
+                        into empathetic, selfdirected, critical thinkers who
+                        don’t give up when faced
+                        with challenges.
+                        </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-400 hover:text-white transition duration-300">Programs</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300">Facilities</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white transition duration-300">Admissions</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 hover:text-white transition duration-300">Get in touch</li>
+                        <p class = "text-gray-400 hover:text-white transition duration-300"><span>TELEPHONE: 07077 96867</span></p>
+                        <li class="text-gray-400 hover:text-white transition duration-300">General Email:</li>
+                        <li class="text-gray-400 hover:text-white transition duration-300"><a href="mailto:info@ilmacademy.net">info@ilmacademy.net</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-indigo-400"></i>
+                            <span>PQ78+X8G, Jacaranda Ave, Nairobi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-indigo-400"></i>
+                            <span>07077 96867</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-indigo-400"></i>
+                            <span>info@ilmacademy.net</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2023 ILM Academy. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://www.facebook.com/profile.php?id=61553200850864&__tn__=%3C" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/ILMAcademy_Nrb" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ilma.cademy/" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-left, .animate-slide-right');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translate(0)';
+                }
+            });
+        };
+
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const header = item.querySelector('h3');
+            const content = item.querySelector('div.text-gray-600');
+            
+            header.addEventListener('click', () => {
+                const isHidden = content.classList.contains('hidden');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('div.text-gray-600').classList.add('hidden');
+                        otherItem.querySelector('i.fa-chevron-down').classList.remove('fa-chevron-up');
+                        otherItem.querySelector('i.fa-chevron-down').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Toggle current item
+                if (isHidden) {
+                    content.classList.remove('hidden');
+                    header.querySelector('i').classList.remove('fa-chevron-down');
+                    header.querySelector('i').classList.add('fa-chevron-up');
+                } else {
+                    content.classList.add('hidden');
+                    header.querySelector('i').classList.remove('fa-chevron-up');
+                    header.querySelector('i').classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Form submission
+        //const admissionForm = document.getElementById('admission-form');
+        //if (admissionForm) {
+            //admissionForm.addEventListener('submit', function(e) {
+                //e.preventDefault();
+                
+                // Here you would typically send the form data to your server
+                // For this example, we'll just show a success message
+                
+                //alert('Thank you for your application! We have received your information and will contact you shortly to complete the admissions process.');
+                //admissionForm.reset();
+                
+                // Scroll to top
+                //window.scrollTo({
+                    //top: 0,
+                    //behavior: 'smooth'
+                //});
+            //});
+        //}
+
+        
+        document.getElementById('admission-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const submitButton = document.getElementById('submitButton');
+        const buttonText = document.getElementById('buttonText');
+
+  // Show loading state
+        submitButton.disabled = true;
+        buttonText.textContent = 'Sending...';
+
+        try {
+    const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+        'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        window.location.href = "/thank-you.html";
+    } else {
+        const result = await response.json();
+        alert("❌ Error: " + (result.message || "Submission failed"));
+    }
+    } catch (error) {
+    alert("❌ Network error: " + error.message);
+    } finally {
+    submitButton.disabled = false;
+    buttonText.textContent = 'Submit Application';
+    }
+});
+
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

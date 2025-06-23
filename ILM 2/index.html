@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILM Academy | Islamic Education Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #5cbbf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .program-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center animate-slide-left">
+                    <a href="index.html" class="flex items-center">
+                        <img src="ilm logo.jpg" alt="ILM Academy Logo" class="h-10 mr-2">
+                        <span class="text-xl font-bold text-gray-900">ILM Academy</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html" class="text-blue-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
+                        <a href="about.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">About</a>
+                        <a href="programs.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Programs</a>
+                        <a href="facilities.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Facilities</a>
+                        <a href="admissions.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Admissions</a>
+                        <a href="contact.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
+                        <a href="privacy.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:bg-gray-50">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">About</a>
+                <a href="programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Programs</a>
+                <a href="facilities.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Facilities</a>
+                <a href="admissions.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50">Admissions</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+                <a href="privacy.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Privacy Policy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="parallax relative py-32 flex items-center justify-center">
+        <!-- Background Video -->
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="WhatsApp Video 2024-12-16 at 22.33.35_1b00b2bc.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        
+        <!-- Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+            Nurturing <span class="gradient-text">Academic Excellence</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto animate-fade-in delay-100">
+            Where academic achievement meets Spiritual values to develop the leaders of tomorrow
+            </p>
+            <div class="animate-fade-in delay-200">
+            <a href="#about" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-10 transition duration-300">
+                Explore Our Academy
+                <i class="fas fa-chevron-right ml-2"></i>
+            </a>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="lg:col-span-5 animate-slide-left">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Students learning" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-30"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <p class="text-sm">Since 2005</p>
+                            <h3 class="text-2xl font-bold">Building Future Leaders</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 lg:mt-0 lg:col-span-7 animate-slide-right">
+                    <div class="text-left">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-6">About <span class="gradient-text">ILM Academy</span></h2>
+                        <div class="w-24 h-1 bg-orange-500 mb-6"></div>
+                        <p class="text-lg text-gray-600 mb-6">ILM Academy is a private school offering U.S. and
+                            UK-based curriculum in Nairobi, Kenya. Our
+                            mission is to provide a nurturing, inclusive, and
+                            academically rigorous environment that fosters
+                            excellence, leadership, and spiritual development.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-cyan-100 rounded-md p-3">
+                                    <i class="fas fa-lightbulb text-cyan-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">Lifelong learning</h4>
+                                    <p class="mt-1 text-gray-600">We instill a love for learning that extends beyond the classroom</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-cyan-100 rounded-md p-3">
+                                    <i class="fas fa-atom text-cyan-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">Academic Excellence</h4>
+                                    <p class="mt-1 text-gray-600">STEM-focused curriculum meeting national standards</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-cyan-100 rounded-md p-3">
+                                    <i class="fas fa-heart text-cyan-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">Character Building</h4>
+                                    <p class="mt-1 text-gray-600">Good moral ethics and social responsibility programs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-cyan-100 rounded-md p-3">
+                                    <i class="fas fa-users text-cyan-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-900">Community</h4>
+                                    <p class="mt-1 text-gray-600">Strong parent-teacher partnerships</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="inline-flex items-center text-blue-600 hover:text-indigo-800 font-medium">
+                            Learn More About Our Mission
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Preview -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">Our <span class="gradient-text">Educational Programs</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">Comprehensive programs designed for every stage of your child's development</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale animate-fade-in">
+                    <div class="h-48 relative">
+                        <img src="KINDERGATEN ILM.jpg" alt="Preschool" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-40"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Early Years & Primary</h3>
+                            <p class="text-orange-200"></p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">In the foundational years, we focus on building strong skills in literacy, numeracy, and social-emotional development. Learning is brought to life through engaging, hands-on experiences that encourage curiosity and help young learners understand the world around them.
+                        </p>
+                            
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale animate-fade-in delay-100">
+                    <div class="h-48 relative">
+                        <img src="MIDDLESCHOOL ILM.jpg" alt="Elementary" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-40"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Middle School</h3>
+                            <p class="text-orange-200">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">In the foundational years, we focus on building strong skills in literacy, numeracy, and social-emotional development. Learning is brought to life through engaging, hands-on experiences that encourage curiosity and help young learners understand the world around them.
+                        </p>
+                            
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale animate-fade-in delay-200">
+                    <div class="h-48 relative">
+                        <img src="HIGHSCHOOL ILM.jpg" alt="Middle School" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-40"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Upper Secondary / High School</h3>
+                            <p class="text-orange-200"></p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">In the final years, students engage in rigorous, future-focused learning with career electives and personalized guidance, preparing them for success beyond the classroom and a clear path to university.
+                            </p>
+                        
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-scale animate-fade-in delay-300">
+                    <div class="h-48 relative">
+                        <img src="FAITH ILM.jpg" alt="High School" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-40"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold">Faith & Values Integration</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">At every stage, we integrate faith-based moral and spiritual growth, nurturing reflective, principled individuals with the integrity and compassion to lead and serve.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-400">
+                <a href="programs.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 md:py-4 md:text-lg md:px-8 transition duration-300">
+                    View All Programs
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
+                    Why Choose <span class="gradient-text">ILM Academy</span>
+                </h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">
+                    What sets our Religious educational institution apart
+                </p>
+            </div>
+    
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Column 1 -->
+                <div class="flex flex-col gap-8">
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Certified Educators</h3>
+                        <p class="text-gray-600">
+                            Our teachers are not only certified in their academic subjects but also have strong Islamic knowledge and teaching credentials.
+                        </p>
+                    </div>
+    
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in delay-200">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Modern Facilities</h3>
+                        <p class="text-gray-600">
+                            State-of-the-art classrooms, science labs, technology resources, and recreational facilities to support learning.
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- Column 2 -->
+                <div class="flex flex-col gap-8">
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in delay-100">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Values, Character, and Faith</h3>
+                        <p class="text-gray-600">
+                            Central to our mission is the development of values-based character. Across all grade levels, students engage in character
+                            education programs that emphasize integrity, kindness, respect, and responsibility. Ethical leadership and service to others
+                            are core expectations of every learner.
+                        </p>
+                    </div>
+    
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in delay-100">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Global Perspective</h3>
+                        <p class="text-gray-600">
+                            ILM Academy equips students with the tools to navigate and contribute to a complex, interconnected world. With international
+                            curricula, multilingual exposure, and cross-cultural enrichment, we prepare learners to think globally, act ethically, and
+                            lead courageously—wherever their journeys may take them.
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- Column 3 -->
+                <div class="flex flex-col gap-8">
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Small Class Sizes</h3>
+                        <p class="text-gray-600">
+                            Personalized attention with low student-to-teacher ratios ensuring each child's needs are met.
+                        </p>
+                    </div>
+    
+                    <div class="flex flex-col bg-cyan-50 p-8 rounded-xl h-full animate-fade-in delay-200">
+                        <div class="h-16 w-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Proven Results</h3>
+                        <p class="text-gray-600">
+                            Our graduates consistently excel academically and are accepted to top universities while maintaining strong moral identities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">What <span class="gradient-text">Parents Say</span></h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto mb-6 animate-fade-in delay-100"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in delay-200">Hear from our community about their experiences with ILM Academy</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-xl animate-fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Parent" class="h-16 w-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900">Aisha Rahman</h4>
+                            <p class="text-blue-600">Parent of primary school </p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"ILM Academy has provided my child with an exceptional balance of academic rigor and social engagement. The teachers genuinely care about each student's growth."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-xl animate-fade-in delay-100">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Parent" class="h-16 w-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900">David Omolo</h4>
+                            <p class="text-blue-600">Parent of Middle School</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The middle school program at ILM is truly remarkable. My son has not only developed academic wise but also social wise he has made multiple friends who he engages with alot."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-xl animate-fade-in delay-200">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Parent" class="h-16 w-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900">Mary Laten'g</h4>
+                            <p class="text-blue-600">Parent of High schoolers</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The nurturing environment at ILM Academy helped my shy preschooler blossom. She now recites duas confidently and loves going to school every day."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6 animate-fade-in">Ready to <span class="gradient-text">Join Us?</span></h2>
+            <p class="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto animate-fade-in delay-100">Discover how our unique approach to education can benefit your child's academic and spiritual growth.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
+                <a href="contact.html" class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300 hover-scale">Schedule a Visit</a>
+                <a href="#" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-3 rounded-lg font-semibold text-lg transition duration-300 hover-scale">Download Brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <!-- Add a dark background container for the logo -->
+                        <div class="bg-gray-900 p-1 rounded mr-2">
+                            <img src="ilm logo.jpg" alt="ILM Academy Logo" class="h-10">
+                        </div>
+                        <span class="text-xl font-bold">ILM Academy</span>
+                    </div>
+                    <p class="text-gray-400">We provide an environment where our children develop into empathetic, selfdirected, critical thinkers who don’t give up when faced with challenges.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-400 hover:text-white transition duration-300">Programs</a></li>
+                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition duration-300">Facilities</a></li>
+                        <li><a href="admissions.html" class="text-gray-400 hover:text-white transition duration-300">Admissions</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400 hover:text-white transition duration-300">Get in touch</li>
+                        <p class = "text-gray-400 hover:text-white transition duration-300"><span>TELEPHONE: 07077 96867</span></p>
+                        <li class="text-gray-400 hover:text-white transition duration-300">General Email: </li>
+                        <li class="text-gray-400 hover:text-white transition duration-300"><a href="mailto:info@ilmacademy.net">info@ilmacademy.net</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>PQ78+X8G, Jacaranda Ave, Nairobi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>07077 96867</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-blue-400"></i>
+                            <span>info@ilmacademy.net</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2023 ILM Academy. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://www.facebook.com/profile.php?id=61553200850864&__tn__=%3C" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/ILMAcademy_Nrb" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ilma.cademy/" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-left, .animate-slide-right');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translate(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
