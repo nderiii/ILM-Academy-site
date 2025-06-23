@@ -1,0 +1,1 @@
+This ILM academy site is a website i had built for a client who runs the ILM academy school i used html and tailwind for the styling i used web3forms to intergrate emails being sent to the school same to the admsisions. I did not add a database since the school wanted to recevive everything via email 
